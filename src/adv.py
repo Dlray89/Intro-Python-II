@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+import textwrap
 
 # Declare all the rooms
 
@@ -25,22 +26,43 @@ earlier adventurers. The only exit is to the south."""),
 
 # Link rooms together
 
-room['outside'].n_to = room['foyer']
-room['foyer'].s_to = room['outside']
-room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
-room['overlook'].s_to = room['foyer']
-room['narrow'].w_to = room['foyer']
-room['narrow'].n_to = room['treasure']
-room['treasure'].s_to = room['narrow']
+room['outside'].connections['n'] = room['foyer']
+room['foyer'].connections['s'] = room['outside']
+room['foyer'].connections['n'] = room['overlook']
+room['foyer'].connections['e'] = room['narrow']
+room['overlook'].connections['s'] = room['foyer']
+room['narrow'].connections['w'] = room['foyer']
+room['narrow'].connections['n'] = room['treasure']
+room['treasure'].connections['s'] = room['narrow']
 
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
+player = Player('David', room['outside'])
 
+print(room['outside'].description)
+print(player)
 # Write a loop that:
+
+user_is_playing = True
+
+while user_is_playing:
+    print(player.currentRoom.name)
+
+    for line in textwrap.wrap(player.currentRoom.description):
+        print(line)
+
+    user_input = input('Which direction would you like to go? n, e, s, w ')
+
+    if user_input in [ 'n', 's', 'e', 'w']:
+        player.move(user_input)
+    else:
+        print('You exited the game')
+    user_is_playing = False
+
+    
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).

@@ -5,19 +5,13 @@ class Player:
     def __init__(self, name, currentRoom):
         self.name = name
         self.currentRoom = currentRoom
+        
+
     
-    def set_name(self, name):
-        if not name:
-                raise Exception('Invaild Name')
-        self.name = name
-    def get_name (self):
-        return self.name
-    name = property(get_name, set_name)
+    
 
 
-player = Player('Dave', "outside")
-player2 = Player('Donnie', "narrow")
-print(player.name)
+
 
 
         
