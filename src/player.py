@@ -16,6 +16,7 @@ class Player:
 
 
 player = Player('Dave', "outside")
+player2 = Player('Donnie', "narrow")
 print(player.name)
 
 
