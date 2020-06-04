@@ -5,24 +5,19 @@ class Player:
     def __init__(self, name, currentRoom):
         self.name = name
         self.currentRoom = currentRoom
+    
+    def set_name(self, name):
+        if not name:
+                raise Exception('Invaild Name')
+        self.name = name
+    def get_name (self):
+        return self.name
+    name = property(get_name, set_name)
 
-    def createCharacter(self):
-        print('hello player! \n welcome')
-        self.name = input('Please enter a character name ')
 
-      
+player = Player('Dave', "outside")
+print(player.name)
+
+
         
 
-#         class Store:
-#     def __init__(self, name, categories):
-#         self.name = name
-#         self.categories = categories
-#     def __str__(self):
-#         output = f"{self.name}\n"
-#         for idx, category in enumerate(self.categories):
-#             output += "  " + str(idx+1) + ". " + category + "\n"
-#         return output
-# my_store = Store("The Dugout", ["Running", "Baseball", "Basketball"])
-# print(my_store)
-# selection = input("Select the number of a department:")
-# print("The user selected " + str(selection))
