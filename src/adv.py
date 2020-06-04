@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+# from item import Item
 import textwrap
 
 # Declare all the rooms
@@ -34,13 +35,15 @@ room['overlook'].connections['s'] = room['foyer']
 room['narrow'].connections['w'] = room['foyer']
 room['narrow'].connections['n'] = room['treasure']
 room['treasure'].connections['s'] = room['narrow']
+ 
+
 
 #
 # Main
 #
 
 # Make a new player object that is currently in the 'outside' room.
-player = Player('David', room['outside'])
+player = Player('David', room['outside'] )
 
 print(room['outside'].description)
 print(player)
@@ -54,13 +57,13 @@ while user_is_playing:
     for line in textwrap.wrap(player.currentRoom.description):
         print(line)
 
-    user_input = input('Which direction would you like to go? n, e, s, w ')
+    user_input = input('Which direction would you like to go? n/e/s/w: ')
 
     if user_input in [ 'n', 's', 'e', 'w']:
         player.move(user_input)
     else:
         print('You exited the game')
-    user_is_playing = False
+        user_is_playing = False
 
     
 #
