@@ -2,16 +2,15 @@
 # currently.
 
 class Player:
-    def __init__(self, name, description):
+    def __init__(self, name, currentRoom):
         self.name = name
-        self.description = description
+        self.currentRoom = currentRoom
 
-        def __str__(self):
-            output = f'{self.name}\n'
-            for idx, description in enumerate(self.description):
-                output += " " + str(idx+1) + '. ' + description + '\n'
-            return output
+    def createCharacter(self):
+        print('hello player! \n welcome')
+        self.name = input('Please enter a character name ')
 
+      
         
 
 #         class Store:
