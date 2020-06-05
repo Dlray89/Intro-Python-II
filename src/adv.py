@@ -1,6 +1,6 @@
 from room import Room
 from player import Player
-# from item import Item
+from item import Item
 import textwrap
 
 # Declare all the rooms
@@ -28,7 +28,7 @@ earlier adventurers. The only exit is to the south."""),
 # Link rooms together
 
 room['outside'].connections['n'] = room['foyer']
-room['foyer'].connections['s'] = room['outside']
+room['foyer' ].connections['s'] = room['outside']
 room['foyer'].connections['n'] = room['overlook']
 room['foyer'].connections['e'] = room['narrow']
 room['overlook'].connections['s'] = room['foyer']
@@ -44,15 +44,18 @@ room['treasure'].connections['s'] = room['narrow']
 
 # Make a new player object that is currently in the 'outside' room.
 player = Player('David', room['outside'] )
+item = Item('map', room['outside'] )
+print("this is the room current items",room['outside'].items)
 
-print(room['outside'].description)
 print(player)
 # Write a loop that:
 
 user_is_playing = True
 
 while user_is_playing:
-    print(player.currentRoom.name)
+    print("Hi im ",player.name, "I currently have a", player.inventory ,"in my inventory.","I am currenly", player.currentRoom.name)
+    
+    
 
     for line in textwrap.wrap(player.currentRoom.description):
         print(line)
