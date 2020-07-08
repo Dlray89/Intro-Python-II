@@ -1,4 +1,5 @@
 from room import Room
+from player import Player
 
 # Declare all the rooms
 
@@ -33,17 +34,56 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+
+
 #
 # Main
-#
+#REPL - Read, Evaluate, Print, Loop
+# print('Choose a direction to go in')
+# location_input = input('Which direction would you like to go in: ')
+# if location_input == 's':
+#     print('Going south')
+# elif location_input == 'n':
+#     print('Going North')
+# elif location_input == 'e':
+#     print('Going East')
+# elif location_input == 'w':
+#     print('Going West')
+# else:
+#     print('No room in that direction')
 
-# Make a new player object that is currently in the 'outside' room.
+# # Make a new player object that is currently in the 'outside' room.
+# player = Player()
+# player.name = input('Enter your name adventurer: ')
+# print('Are you ready to begin your adventure ' + player
+#       .name)
+# yes_or_no = input('yes or no: ')
+# if yes_or_no == 'yes':
+#     print('lets begin')
+# elif yes_or_no == 'no':
+#     print('Your not ready')
+# else:
+#     print('You enter an invaild command')
+#
+# print(str(room['outside']) + ' ' + 'and' + ' ' + player.name + ' heads in to take a look')
+
+room = input('which direction would like to go in')
+for key in room:
+    if room['outside'] == 'n':
+        print('you are now outside')
+    else:
+        print('what do you to do')
+
+
+
 
 # Write a loop that:
 #
 # * Prints the current room name
 # * Prints the current description (the textwrap module might be useful here).
 # * Waits for user input and decides what to do.
+
+
 #
 # If the user enters a cardinal direction, attempt to move to the room there.
 # Print an error message if the movement isn't allowed.
