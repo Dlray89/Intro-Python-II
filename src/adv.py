@@ -1,5 +1,6 @@
 from room import Room
 from player import Player
+from item import Item
 
 # Declare all the rooms
 
@@ -22,6 +23,9 @@ chamber! Sadly, it has already been completely emptied by
 earlier adventurers. The only exit is to the south."""),
 }
 
+item = {
+    'Torch': Item('A Torch', """an item that will give you light""" )
+}
 
 # Link rooms together
 
@@ -39,18 +43,6 @@ room['treasure'].s_to = room['narrow']
 #
 # Main
 #REPL - Read, Evaluate, Print, Loop
-# print('Choose a direction to go in')
-# location_input = input('Which direction would you like to go in: ')
-# if location_input == 's':
-#     print('Going south')
-# elif location_input == 'n':
-#     print('Going North')
-# elif location_input == 'e':
-#     print('Going East')
-# elif location_input == 'w':
-#     print('Going West')
-# else:
-#     print('No room in that direction')
 
 # # Make a new player object that is currently in the 'outside' room.
 player = Player()
@@ -85,13 +77,23 @@ print('-------------------------------------------------------------------')
 direction = input('Which way would you like to go n or e or s: ')
 if direction == 'n':
     player.current_room = room['foyer']
-    print('You have enter the ' + '' + player.current_room)
+
+    print('As ' + player.name + ' walks up the dark tunnel you notice an item on the ground ' + '.')
+    grab = input('Would you like to pick up the item?: yes or no ')
+    if grab == 'yes':
+        print(' you have picked up a ' + str(item['Torch']))
+    elif grab == 'no':
+        print('You continue to walk down the tunnel')
+    else:
+        print('choose a valid selections')
+
+    print('You have enter the ' + '' + str(player.current_room))
 elif direction == 'e':
     player.current_room = room['narrow']
     print(room['narrow'])
 elif direction == 's':
     player.current_room = room['outside']
-    print('You are back ' + '' + str(room['outside']))
+    print('You are back ' + '' + player.current_room)
 else:
     print("you cant go that way")
 
