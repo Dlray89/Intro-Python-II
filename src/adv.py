@@ -56,11 +56,13 @@ room['treasure'].s_to = room['narrow']
 player = Player()
 
 # player name input
-player.name = input('Enter your name adventurer: ')
-print('Are you ready to begin your adventure ' + player
-      .name)
+game = True
+if game:
+    player.name = input('Enter your name adventurer: ')
+    print('Are you ready to begin your adventure ' + player.name)
 
 # yes or no for player to start game
+
 yes_or_no = input('yes or no: ')
 if yes_or_no == 'yes':
     print('lets begin')
@@ -71,17 +73,24 @@ else:
 print('--------------------------------------------------------------------')
 
 # players current position
-print(str(room['outside']) + ' ' + 'and' + ' ' + player.name + ' heads in to take a look')
+player.current_room = room['outside']
+print(str(player.current_room) + ' ' + 'and' + ' ' + player.name + ' heads in to take a look')
+print(player.name + 'takes a look around and right in front of you are two additional paths.')
+print('To the North is' + str(room['foyer']) + '.')
+print('To the East is ' + str(room['narrow']) + '.')
+print('and south leads back outside')
 print('-------------------------------------------------------------------')
-print('You are now in the ' + ' ' + str(room['foyer']))
 
 # input for player to decide which way to go in the cave
-direction = input('Would you like to go n or e or s: ')
+direction = input('Which way would you like to go n or e or s: ')
 if direction == 'n':
-    print('You have enter the ' + '' + str(room['overlook']))
+    player.current_room = room['foyer']
+    print('You have enter the ' + '' + player.current_room)
 elif direction == 'e':
+    player.current_room = room['narrow']
     print(room['narrow'])
 elif direction == 's':
+    player.current_room = room['outside']
     print('You are back ' + '' + str(room['outside']))
 else:
     print("you cant go that way")
