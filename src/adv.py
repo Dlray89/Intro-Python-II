@@ -46,6 +46,7 @@ room['treasure'].s_to = room['narrow']
 
 # # Make a new player object that is currently in the 'outside' room.
 player = Player()
+player.inventory = []
 
 # player name input
 game = True
@@ -79,6 +80,7 @@ if direction == 'n':
     player.current_room = room['foyer']
 
     print('As ' + player.name + ' walks up the dark tunnel you notice an item on the ground ' + '.')
+
     grab = input('Would you like to pick up the item?: yes or no ')
     if grab == 'yes':
         print(' you have picked up a ' + str(item['Torch']))
@@ -86,6 +88,13 @@ if direction == 'n':
         print('You continue to walk down the tunnel')
     else:
         print('choose a valid selections')
+
+    item_inventory = input('Want to add?: yes or no ')
+    if item_inventory == 'yes':
+        player.push(item['Torch'])
+        print(player.size())
+    else:
+        print('nothing is added')
 
     print('You have enter the ' + '' + str(player.current_room))
 elif direction == 'e':
