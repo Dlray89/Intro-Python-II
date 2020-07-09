@@ -7,7 +7,7 @@ room = {
     'outside':  Room("Outside Cave Entrance",
                      "North of you, the cave mount beckons"),
 
-    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
+    'foyer':    Room("Foyer", """ A Dim light filters in from the south and Dusty
 passages run north and east."""),
 
     'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
@@ -53,26 +53,41 @@ room['treasure'].s_to = room['narrow']
 #     print('No room in that direction')
 
 # # Make a new player object that is currently in the 'outside' room.
-# player = Player()
-# player.name = input('Enter your name adventurer: ')
-# print('Are you ready to begin your adventure ' + player
-#       .name)
-# yes_or_no = input('yes or no: ')
-# if yes_or_no == 'yes':
-#     print('lets begin')
-# elif yes_or_no == 'no':
-#     print('Your not ready')
-# else:
-#     print('You enter an invaild command')
-#
-# print(str(room['outside']) + ' ' + 'and' + ' ' + player.name + ' heads in to take a look')
+player = Player()
 
-room = input('which direction would like to go in')
-for key in room:
-    if room['outside'] == 'n':
-        print('you are now outside')
-    else:
-        print('what do you to do')
+# player name input
+player.name = input('Enter your name adventurer: ')
+print('Are you ready to begin your adventure ' + player
+      .name)
+
+# yes or no for player to start game
+yes_or_no = input('yes or no: ')
+if yes_or_no == 'yes':
+    print('lets begin')
+elif yes_or_no == 'no':
+    print('Your not ready')
+else:
+    print('You enter an invaild command')
+print('--------------------------------------------------------------------')
+
+# players current position
+print(str(room['outside']) + ' ' + 'and' + ' ' + player.name + ' heads in to take a look')
+print('-------------------------------------------------------------------')
+print('You are now in the ' + ' ' + str(room['foyer']))
+
+# input for player to decide which way to go in the cave
+direction = input('Would you like to go n or e or s: ')
+if direction == 'n':
+    print('You have enter the ' + '' + str(room['overlook']))
+elif direction == 'e':
+    print(room['narrow'])
+elif direction == 's':
+    print('You are back ' + '' + str(room['outside']))
+else:
+    print("you cant go that way")
+
+
+
 
 
 
